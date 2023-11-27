@@ -1,10 +1,10 @@
-
-
+int numRecipes;
 ArrayList<Recipe> Recipes = new ArrayList<Recipe>();
 
 
 void setup(){
   size(600,800);
+  
 }
 
 
