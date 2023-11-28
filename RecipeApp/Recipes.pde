@@ -12,14 +12,26 @@ class Recipe{
     ingredients = i;
     photo = p;
   }
-  //for ingredient check, the ingredients which are all in one String currently
-  //must be broken into an array/arraylist in order to check
-  //can also do this
-  //https://www.geeksforgeeks.org/check-string-substring-another/
   
-  void checkIngredients(){
-    
-  
+  boolean checkIngredients(){
+    int M = ingredients.length();
+    int N = ingredientsOwned.length();
+ 
+        /* A loop to slide pat[] one by one */
+        for (int i = 0; i <= N - M; i++) {
+            int j;
+ 
+            /* For current index i, check for
+            pattern match */
+            for (j = 0; j < M; j++)
+                if (ingredientsOwned.charAt(i + j) != ingredients.charAt(j))
+                    break;
+ 
+            if (j == M)
+                return true;
+        }
+ 
+        return false;
   }
   
   
