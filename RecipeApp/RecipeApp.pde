@@ -6,8 +6,11 @@ void setup() {
   recipes = new ArrayList<Recipes>();
 }
 
+
+
 void draw() {
   background(255);
+  buildRecipe();
   displayRecipes();
   displayInputField();
 }
@@ -54,6 +57,9 @@ void keyPressed() {
 }
 
 void buildRecipe() {
+
+  int enterCount = 0; // counter enters and use keypresed function to do this I think
+
   String recipeName = input("Enter recipe name:");
   String ingredients = input("Enter ingredients (comma-separated):");
   String instructions = input("Enter instructions:");
