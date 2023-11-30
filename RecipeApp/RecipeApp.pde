@@ -179,14 +179,4 @@ class Recipes {
   public String toString() {
     return "Name: " + name + "\nIngredients: " + ingredients + "\nInstructions: " + instructions + "\nComments: " + comments + "\n";
   }
-
-int numRecipes;
-
-void setup(){
-  size(600,800);
-}
-
-
-void draw(){
-  windowResize(displayWidth, displayHeight);
 }
