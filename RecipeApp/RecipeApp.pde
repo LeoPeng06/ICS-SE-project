@@ -35,15 +35,15 @@ void SaveRecipeToText() {
     FormattedRecipe[3] = "List of Ingredients:";
     FormattedRecipe[4] = Ingredients;
     
-    SaveRecipe.setAlpha(0);
-    RecipeName.setText(null);
-    RecipeName.setAlpha(0);
-    CreatersName.setText(null);
-    CreatersName.setAlpha(0);
-    RecipeName.setText(null);
-    RecipeName.setAlpha(0);
-    RecipeName.setText(null);
-    RecipeName.setAlpha(0);
+    //SaveRecipe.setAlpha(0);
+    //RecipeName.setText(null);
+    //RecipeName.setAlpha(0);
+    //CreatersName.setText(null);
+    //CreatersName.setAlpha(0);
+    //RecipeName.setText(null);
+    //RecipeName.setAlpha(0);
+    //RecipeName.setText(null);
+    //RecipeName.setAlpha(0);
     
     saveStrings(RecipeCode, FormattedRecipe);
   }
