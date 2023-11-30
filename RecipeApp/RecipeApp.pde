@@ -1,6 +1,6 @@
 // Need G4P library
 import g4p_controls.*;
-
+boolean test = false;
 String nameOfNewRecipe;
 String nameOfRecipeCreator;
 String listOfRecipeIngredients;
@@ -10,10 +10,13 @@ PrintWriter output;
 public void setup(){
   size(500, 500);
   createGUI();
+  
+  SavedLabel.setAlpha(0);
 }
 
 public void draw(){
   background(230);
+
 }
 
 void SaveRecipeToText() {
@@ -32,7 +35,15 @@ void SaveRecipeToText() {
     FormattedRecipe[3] = "List of Ingredients:";
     FormattedRecipe[4] = Ingredients;
     
-    
+    SaveRecipe.setAlpha(0);
+    RecipeName.setText(null);
+    RecipeName.setAlpha(0);
+    CreatersName.setText(null);
+    CreatersName.setAlpha(0);
+    RecipeName.setText(null);
+    RecipeName.setAlpha(0);
+    RecipeName.setText(null);
+    RecipeName.setAlpha(0);
     
     saveStrings(RecipeCode, FormattedRecipe);
   }
