@@ -134,8 +134,3 @@ class Recipes {
     return "Name: " + name + "\nIngredients: " + ingredients + "\nInstructions: " + instructions + "\nComments: " + comments + "\n";
   }
 }
-
-
-void draw(){
-  windowResize(displayWidth, displayHeight);
-}
