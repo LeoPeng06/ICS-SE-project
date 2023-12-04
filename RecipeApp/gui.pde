@@ -64,8 +64,10 @@ public void createGUI(){
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
   RecipeMaker = new GPanel(this, 40, 30, 410, 450, "Recipe Maker");
+  RecipeMaker.setCollapsed(true);
   RecipeMaker.setDraggable(false);
   RecipeMaker.setText("Recipe Maker");
+  RecipeMaker.setLocalColorScheme(GCScheme.GOLD_SCHEME);
   RecipeMaker.setOpaque(true);
   RecipeMaker.addEventHandler(this, "panel1_Click1");
   Recipe = new GTextField(this, 10, 60, 120, 20, G4P.SCROLLBARS_NONE);
@@ -137,7 +139,7 @@ public void createGUI(){
   RecipeMaker.addControl(CookingTime);
   RecipeMaker.addControl(CookingSteps);
   RecipeMaker.addControl(recipeInstructions);
-  searchIngredient = new GTextField(this, 200, 50, 200, 30, G4P.SCROLLBARS_NONE);
+  searchIngredient = new GTextField(this, 220, 110, 200, 30, G4P.SCROLLBARS_NONE);
   searchIngredient.setOpaque(true);
   searchIngredient.addEventHandler(this, "SearchRecipes");
 }

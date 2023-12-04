@@ -23,6 +23,7 @@ String listOfRecipeIngredients;
 String ingredientsOwn;
 String recipeSteps;
 String[] ingredientsOwned;
+ArrayList<String> recipeNames = new ArrayList<String>();
 ArrayList<String> ingredientsNeeded = new ArrayList<String>();
 PrintWriter output;
 
@@ -31,14 +32,19 @@ public void setup(){
   println(numRecipes);
   println(dict);
   println(ingredientsNeeded);
+  println(recipeNames.get(0));
+  
+  
+
+  println(ingredientsNeeded);
   size(500, 500, JAVA2D);
   createGUI();
   customGUI();
 
-   
 }
 
 public void draw(){
+  
   numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
   getIngredients();
   containsIngredients();
@@ -49,6 +55,9 @@ public void draw(){
   fill(0);
  // text("Recipe App",250,100);
   
+  try{ println(ingredientsOwned[0]); println(ingredientsOwned[1]);}
+  catch(Exception e){}
+   
   
   //frameRate(1);
 }
@@ -68,7 +77,7 @@ void SaveRecipeToText() {
     PrintWriter newRecipe = createWriter(RecipeCode);    
     String[] FormattedRecipe = new String[8];
     
-    FormattedRecipe[0] = "Name of Recipe: "+nameOfNewRecipe;
+    FormattedRecipe[0] = "Name of Recipe:"+nameOfNewRecipe;
     FormattedRecipe[1] = "Recipe Creator: "+nameOfRecipeCreator;
     FormattedRecipe[2] = " ";
     FormattedRecipe[3] = "List of Ingredients:";
