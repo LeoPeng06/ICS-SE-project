@@ -7,9 +7,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.*;
 
-//Map<String, String> map = new HashMap<String, String>();
-int numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/idk_rn/data").list().length;
+Hashtable<String, ArrayList<String>> dict= new Hashtable<>();
+int numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
 boolean test = false;
 String nameOfNewRecipe;
 String nameOfRecipeCreator;
@@ -23,18 +27,19 @@ ArrayList<String> ingredientsNeeded = new ArrayList<String>();
 PrintWriter output;
 
 public void setup(){
- 
+  getIngredients();
   println(numRecipes);
-
+  println(dict);
+  println(ingredientsNeeded);
   size(500, 500, JAVA2D);
   createGUI();
   customGUI();
- // listFilesForFolder(folder);
-  // Place your setup code here
-  //SaveRecipe.setAlpha(0);
+
+   
 }
 
 public void draw(){
+  numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
   getIngredients();
   containsIngredients();
   background(255);
@@ -42,7 +47,8 @@ public void draw(){
   textAlign(CENTER);
   textSize(100);
   fill(0);
-  text("Recipe App",250,100);
+ // text("Recipe App",250,100);
+  
   
   //frameRate(1);
 }
@@ -53,19 +59,13 @@ public void customGUI(){
 
 }
 
-void getInfoFromText(){
-
-  
-}
 
 void SaveRecipeToText() {
  
     String[] allIngredients = split(listOfRecipeIngredients, " ");
-    String RecipeCode = String.valueOf(numRecipes)+".txt";
-    String Ingredients = join(allIngredients, " ");
-    
-    PrintWriter newRecipe = createWriter(RecipeCode);
-    
+    String RecipeCode = String.valueOf(numRecipes)+".txt"; //recipe file name is a number so that it is easy to go through all of them with a for loop
+    String Ingredients = join(allIngredients, " ");    
+    PrintWriter newRecipe = createWriter(RecipeCode);    
     String[] FormattedRecipe = new String[8];
     
     FormattedRecipe[0] = "Name of Recipe: "+nameOfNewRecipe;
@@ -76,28 +76,9 @@ void SaveRecipeToText() {
     FormattedRecipe[5] = "Preparation Time:" + prepTime;
     FormattedRecipe[6] = "Cooking Time:" + cookTime;
     FormattedRecipe[7] = "Recipe Steps:" + recipeSteps;
-    
-    //SaveRecipe.setAlpha(0);
-    //RecipeName.setText("");
-    //RecipeName.setAlpha(0);
-    //CreatersName.setText("");
-    //CreatersName.setAlpha(0);
-    //IngredientGetter.setText("");
-    //IngredientGetter.setAlpha(0);
-    
+       
     saveStrings(RecipeCode, FormattedRecipe);
     println("recipe succesfully saved");
     
-    //int frame = 2;
-    //int currentFrame = frameCount;
-    
-    //while (frameCount <= currentFrame+frame) {
-      
-    //}
-    
-    //SaveRecipe.setAlpha(1);
-    //RecipeName.setAlpha(1);
-    //CreatersName.setAlpha(1);
-    //IngredientGetter.setAlpha(1);
-  
+
 }
