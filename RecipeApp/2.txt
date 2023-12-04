@@ -1,0 +1,8 @@
+Name of Recipe: apple
+Recipe Creator: apple
+ 
+List of Ingredients:
+apple
+Preparation Time:0
+Cooking Time:0
+Recipe Steps:a
