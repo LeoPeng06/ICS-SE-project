@@ -1,8 +1,0 @@
-Name of Recipe: apple
-Recipe Creator: asd
- 
-List of Ingredients:
-asd
-Preparation Time:0
-Cooking Time:0
-Recipe Steps:asd
