@@ -13,6 +13,7 @@ import java.util.Hashtable;
 import java.util.*;
 
 Hashtable<String, ArrayList<String>> dict= new Hashtable<>();
+//rename to current directory
 int numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
 boolean test = false;
 String nameOfNewRecipe;
@@ -31,12 +32,12 @@ public void setup(){
   getIngredients();
   println(numRecipes);
   println(dict);
-  println(ingredientsNeeded);
-  println(recipeNames.get(0));
-  
+  //println(recipeNames.get(0));
+  //println(dict.get(recipeNames.get(0)).size());
+ // println(dict.get(recipeNames.get(0)));
   
 
-  println(ingredientsNeeded);
+  //println(ingredientsNeeded);
   size(500, 500, JAVA2D);
   createGUI();
   customGUI();
@@ -46,17 +47,20 @@ public void setup(){
 public void draw(){
   
   numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
-  getIngredients();
+ // getIngredients();
   containsIngredients();
-  background(255);
+  background(255,0,0);
+  
   stroke(1);
   textAlign(CENTER);
-  textSize(100);
+  textSize(40);
   fill(0);
- // text("Recipe App",250,100);
+  text("Recipe App",250,60);
+  textSize(20);
+  text("enter ingredients here", 320,90);
   
-  try{ println(ingredientsOwned[0]); println(ingredientsOwned[1]);}
-  catch(Exception e){}
+  //try{ println(ingredientsOwned[0]); println(ingredientsOwned[1]);}
+  //catch(Exception e){}
    
   
   //frameRate(1);

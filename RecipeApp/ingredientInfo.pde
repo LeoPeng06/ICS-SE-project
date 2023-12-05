@@ -4,8 +4,9 @@ void getIngredients(){
   int endIndex = 0;
   int startIndex = 0;
   try{
-  
+
     for(int i = 0; i < numRecipes; i++){
+      ingredientsNeeded = new ArrayList<>();
       String[] myData = loadStrings(i+".txt");
       for(int j=0; j<myData.length; j++){
         //gets the first index with ingredients and also the index where it ends
@@ -16,25 +17,29 @@ void getIngredients(){
           endIndex = j;
         }       
         
-      }
-      //adds each index with ingredients to an arraylist
-      //removed later to be replaced by hashtable
-      dict.clear();
-     ingredientsNeeded.clear();
-     
+      }     
      for(int j = 0; j < endIndex - startIndex; j++){
-       ingredientsNeeded.add(myData[startIndex+j]);
+       
+       ingredientsNeeded.add(myData[startIndex+j].strip());
        
       }
+      
       String[] split = myData[0].split(":");
       dict.put(split[1],ingredientsNeeded);
-      recipeNames.add(split[1]);
+      
+
+     // println(ingredientsNeeded);
+      recipeNames.add(split[1].strip());
+      //ingredientsNeeded.clear();
+     // println(dict);
+    
     }
+    //ingredientsNeeded.clear();
   }
   catch(Exception e){
     println("you Have no recipes");
   }
-
+  
 }
 
 
@@ -46,33 +51,37 @@ void containsIngredients(){
   }
   catch(Exception E){
   }
+  
   try{
-    
-    for(int i = 0; i < recipeNames.size(); i++){
+    for(int i = 0; i < recipeNames.size(); i++){ // i = recipe index
       counter = 0;
-      for(int j = 0; j < dict.get(recipeNames.get(i)).size(); j++){
+      //println(recipeNames.size());
+      for(int j = 0; j < ingredientsOwned.length; j++){
         if(dict.get(recipeNames.get(i)).contains(ingredientsOwned[j])){
-          //println(ingredientsOwned[j]);
+          //println(dict.get(recipeNames.get(i)));
           counter++;
           if (counter == dict.get(recipeNames.get(i)).size()){
-            //println("lalala");
-            
+            println("lalala");         
           }
-          //println(dict.get(recipeNames.get(i)).size());
-         // println(counter);
-        }
-        
-      }
-      if (ingredientsNeeded.contains(ingredientsOwned[i])){ //if text entered is in one of the ingredients needed, prints yay
-        println("yay");
-      }
-      else{
-        println("na");
+          else{
+            println("nanana");
+          }
+         // println(dict.get(recipeNames.get(1)).size());
+          //println(counter);
+         // println(ingredientsOwned);
+      //if (ingredientsNeeded.contains(ingredientsOwned[j])){ //if text entered is in one of the ingredients needed, prints yay
+      //  println("matching recipe found");
+      //}
+      //else{
+      //  println("no recipes found");
+      //}
+        }     
       }
     }
   
   }
   catch(Exception E){
+    
   }
   
 }
