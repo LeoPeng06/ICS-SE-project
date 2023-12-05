@@ -47,8 +47,8 @@ public void setup(){
 public void draw(){
   
   numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
- // getIngredients();
-  containsIngredients();
+  getIngredients();
+
   background(255,0,0);
   
   stroke(1);
@@ -58,7 +58,7 @@ public void draw(){
   text("Recipe App",250,60);
   textSize(20);
   text("enter ingredients here", 320,90);
-  
+  containsIngredients();
   //try{ println(ingredientsOwned[0]); println(ingredientsOwned[1]);}
   //catch(Exception e){}
    

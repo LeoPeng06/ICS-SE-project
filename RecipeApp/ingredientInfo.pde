@@ -43,42 +43,45 @@ void getIngredients(){
 }
 
 
-void containsIngredients(){
-  int counter = 0;
-  
-  try{
-    ingredientsOwned = ingredientsOwn.split(","); //splits the text entered in the search bar
-  }
-  catch(Exception E){
-  }
-  
-  try{
-    for(int i = 0; i < recipeNames.size(); i++){ // i = recipe index
-      counter = 0;
-      //println(recipeNames.size());
-      for(int j = 0; j < ingredientsOwned.length; j++){
-        if(dict.get(recipeNames.get(i)).contains(ingredientsOwned[j])){
-          //println(dict.get(recipeNames.get(i)));
+void containsIngredients() {
+  int textY = 250; // Initial vertical position of the text
+   Set<String> uniqueRecipes = new HashSet<>(); // Set to store unique recipes
+
+
+  try {
+    ingredientsOwned = ingredientsOwn.split(",");
+    
+    boolean matchFound = false; // Flag to check if at least one match is found
+
+    for (int i = 0; i < recipeNames.size(); i++) {
+      int counter = 0;
+
+      for (int j = 0; j < ingredientsOwned.length; j++) {
+        if (dict.get(recipeNames.get(i)).contains(ingredientsOwned[j])) {
           counter++;
-          if (counter == dict.get(recipeNames.get(i)).size()){
-            println("you can make " + recipeNames.get(i));         
+          String recipeName = recipeNames.get(i);
+          if (counter == dict.get(recipeNames.get(i)).size()) {
+            if(!uniqueRecipes.contains(recipeName)){
+            fill(0);
+            textAlign(CENTER);
+            text("You can make " + recipeNames.get(i), 250, textY);
+            }
+            // Move the text down for the next match
+            textY += 20; // Adjust the value based on your preference for spacing
+            uniqueRecipes.add(recipeName);
+            matchFound = true;
           }
-         // println(dict.get(recipeNames.get(1)).size());
-          //println(counter);
-         // println(ingredientsOwned);
-      //if (ingredientsNeeded.contains(ingredientsOwned[j])){ //if text entered is in one of the ingredients needed, prints yay
-      //  println("matching recipe found");
-      //}
-      //else{
-      //  println("no recipes found");
-      //}
-        }     
+        }
       }
     }
-  
+
+    if (!matchFound) {
+      // If no match is found, display a message
+      fill(0);
+      textAlign(CENTER);
+      text("No matching recipes found", 250, textY);
+    }
+
+  } catch (Exception e) {
   }
-  catch(Exception E){
-    
-  }
-  
 }
