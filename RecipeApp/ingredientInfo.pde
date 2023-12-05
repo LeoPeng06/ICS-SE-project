@@ -61,7 +61,7 @@ void containsIngredients(){
           //println(dict.get(recipeNames.get(i)));
           counter++;
           if (counter == dict.get(recipeNames.get(i)).size()){
-            println("lalala");         
+            println(dict.get(recipeNames.get(i)));         
           }
           else{
             println("nanana");
