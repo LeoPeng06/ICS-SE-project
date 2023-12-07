@@ -58,14 +58,13 @@ public void draw(){
   numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
   getIngredients();
   setRecipeValues();
-  println(recipeNames);
+  
   background(255,0,0);
   
   if (numRecipes >= 1){
     for(int i=0; i < numRecipes; i++){
       if (ingredientsOwned == null||ingredientsOwn == ""){
-           println(recipeList.get(i).name);
-           setRecipePos(i);
+           recipeList.get(i).setRecipePos(i);
            recipeList.get(i).drawRecipes();
         }
     else{
@@ -75,7 +74,7 @@ public void draw(){
     }
   }
   for(int i=0; i < matchingRecipes.size(); i++){
-     setRecipePos(i);
+     matchingRecipes.get(i).setRecipePos(i);
      matchingRecipes.get(i).drawRecipes();
   }
   
