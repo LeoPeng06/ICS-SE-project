@@ -50,8 +50,12 @@ public void RecipeInstructions(GTextArea source, GEvent event) { //_CODE_:recipe
   recipeSteps = recipeInstructions.getText();
 } //_CODE_:recipeInstructions:645923:
 
+public void textarea1_change1(GTextArea source, GEvent event) { //_CODE_:ingredientAmount:776553:
+  listOfRecipeIngredients = ingredientAmount.getText();
+} //_CODE_:ingredientAmount:776553:
+
 public void SearchRecipes(GTextField source, GEvent event) { //_CODE_:searchIngredient:913126:
- ingredientsOwn = searchIngredient.getText();
+ ingredientsOwn = searchIngredient.getText().strip();
 } //_CODE_:searchIngredient:913126:
 
 
@@ -64,37 +68,36 @@ public void createGUI(){
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
   RecipeMaker = new GPanel(this, 40, 30, 410, 450, "Recipe Maker");
-  RecipeMaker.setCollapsed(true);
   RecipeMaker.setDraggable(false);
   RecipeMaker.setText("Recipe Maker");
   RecipeMaker.setLocalColorScheme(GCScheme.GOLD_SCHEME);
   RecipeMaker.setOpaque(true);
   RecipeMaker.addEventHandler(this, "panel1_Click1");
-  Recipe = new GTextField(this, 10, 60, 120, 20, G4P.SCROLLBARS_NONE);
+  Recipe = new GTextField(this, 10, 60, 110, 20, G4P.SCROLLBARS_NONE);
   Recipe.setOpaque(true);
   Recipe.addEventHandler(this, "getRecipe");
-  RecipeName = new GLabel(this, 10, 30, 120, 20);
+  RecipeName = new GLabel(this, 10, 30, 110, 20);
   RecipeName.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   RecipeName.setText("Recipe Name");
   RecipeName.setOpaque(false);
-  Ingredients = new GTextArea(this, 270, 60, 120, 200, G4P.SCROLLBARS_NONE);
+  Ingredients = new GTextArea(this, 250, 60, 90, 200, G4P.SCROLLBARS_NONE);
   Ingredients.setOpaque(true);
   Ingredients.addEventHandler(this, "getIngredients");
-  Creator = new GTextField(this, 140, 60, 120, 20, G4P.SCROLLBARS_NONE);
+  Creator = new GTextField(this, 130, 60, 110, 20, G4P.SCROLLBARS_NONE);
   Creator.setOpaque(true);
   Creator.addEventHandler(this, "getCreator");
-  CreatorName = new GLabel(this, 140, 30, 120, 20);
+  CreatorName = new GLabel(this, 130, 30, 110, 20);
   CreatorName.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   CreatorName.setText("CreatorName");
   CreatorName.setOpaque(false);
-  IngredientsLabel = new GLabel(this, 270, 30, 120, 20);
+  IngredientsLabel = new GLabel(this, 250, 30, 90, 20);
   IngredientsLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   IngredientsLabel.setText("Ingredients");
   IngredientsLabel.setOpaque(false);
   SaveRecipe = new GButton(this, 10, 400, 80, 30);
   SaveRecipe.setText("Save Recipe");
   SaveRecipe.addEventHandler(this, "SaveRecipeToText");
-  PrepTime = new GSlider(this, 10, 100, 250, 60, 10.0);
+  PrepTime = new GSlider(this, 10, 100, 220, 60, 10.0);
   PrepTime.setShowValue(true);
   PrepTime.setShowLimits(true);
   PrepTime.setLimits(0, 0, 120);
@@ -110,7 +113,7 @@ public void createGUI(){
   CookTime = new GLabel(this, 10, 155, 120, 20);
   CookTime.setText("Cooking Time");
   CookTime.setOpaque(false);
-  CookingTime = new GSlider(this, 10, 170, 250, 60, 10.0);
+  CookingTime = new GSlider(this, 10, 170, 220, 60, 10.0);
   CookingTime.setShowValue(true);
   CookingTime.setShowLimits(true);
   CookingTime.setLimits(0, 0, 120);
@@ -126,6 +129,13 @@ public void createGUI(){
   recipeInstructions = new GTextArea(this, 10, 269, 380, 120, G4P.SCROLLBARS_NONE);
   recipeInstructions.setOpaque(true);
   recipeInstructions.addEventHandler(this, "RecipeInstructions");
+  ingredientAmt = new GLabel(this, 350, 30, 50, 20);
+  ingredientAmt.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  ingredientAmt.setText("Amt");
+  ingredientAmt.setOpaque(true);
+  ingredientAmount = new GTextArea(this, 350, 60, 50, 200, G4P.SCROLLBARS_NONE);
+  ingredientAmount.setOpaque(true);
+  ingredientAmount.addEventHandler(this, "textarea1_change1");
   RecipeMaker.addControl(Recipe);
   RecipeMaker.addControl(RecipeName);
   RecipeMaker.addControl(Ingredients);
@@ -139,6 +149,8 @@ public void createGUI(){
   RecipeMaker.addControl(CookingTime);
   RecipeMaker.addControl(CookingSteps);
   RecipeMaker.addControl(recipeInstructions);
+  RecipeMaker.addControl(ingredientAmt);
+  RecipeMaker.addControl(ingredientAmount);
   searchIngredient = new GTextField(this, 220, 110, 200, 30, G4P.SCROLLBARS_NONE);
   searchIngredient.setOpaque(true);
   searchIngredient.addEventHandler(this, "SearchRecipes");
@@ -160,4 +172,6 @@ GLabel CookTime;
 GSlider CookingTime; 
 GLabel CookingSteps; 
 GTextArea recipeInstructions; 
+GLabel ingredientAmt; 
+GTextArea ingredientAmount; 
 GTextField searchIngredient; 

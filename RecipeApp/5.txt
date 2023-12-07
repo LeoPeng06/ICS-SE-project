@@ -1,0 +1,8 @@
+Name of Recipe:pineapple
+Recipe Creator: a
+ 
+List of Ingredients:
+pineapple
+Preparation Time:0
+Cooking Time:0
+Recipe Steps:a

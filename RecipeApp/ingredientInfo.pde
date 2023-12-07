@@ -26,18 +26,11 @@ void getIngredients(){
       
       String[] split = myData[0].split(":");
       dict.put(split[1],ingredientsNeeded);
-      
-
-     // println(ingredientsNeeded);
       recipeNames.add(split[1].strip());
-      //ingredientsNeeded.clear();
-     // println(dict);
-    
     }
-    //ingredientsNeeded.clear();
   }
   catch(Exception e){
-    println("you Have no recipes");
+    text("you Have no recipes",250,250);
   }
   
 }
@@ -51,31 +44,33 @@ void containsIngredients() {
   try {
     ingredientsOwned = ingredientsOwn.split(",");
     
-    boolean matchFound = false; // Flag to check if at least one match is found
-
+    boolean recipeFound = false; // Flag to check if at least one match is found
     for (int i = 0; i < recipeNames.size(); i++) {
       int counter = 0;
 
       for (int j = 0; j < ingredientsOwned.length; j++) {
+        ingredientsOwned[j]=ingredientsOwned[j].trim();
         if (dict.get(recipeNames.get(i)).contains(ingredientsOwned[j])) {
           counter++;
           String recipeName = recipeNames.get(i);
           if (counter == dict.get(recipeNames.get(i)).size()) {
             if(!uniqueRecipes.contains(recipeName)){
-            fill(0);
-            textAlign(CENTER);
-            text("You can make " + recipeNames.get(i), 250, textY);
+              fill(0);
+              textAlign(CENTER);
+              text("You can make " + recipeNames.get(i), 250, textY);
             }
             // Move the text down for the next match
             textY += 20; // Adjust the value based on your preference for spacing
             uniqueRecipes.add(recipeName);
-            matchFound = true;
+            recipeFound = true;
           }
         }
       }
+       
+
     }
 
-    if (!matchFound) {
+    if (!recipeFound) {
       // If no match is found, display a message
       fill(0);
       textAlign(CENTER);
