@@ -23,11 +23,14 @@ String nameOfRecipeCreator;
 int prepTime;
 int cookTime;
 String listOfRecipeIngredients;
+String listOfIngredientsAmt;
 String ingredientsOwn;
 String recipeSteps;
 String[] ingredientsOwned;
+
 ArrayList<String> recipeNames = new ArrayList<String>();
 ArrayList<String> ingredientsNeeded = new ArrayList<String>();
+ArrayList<String> cookableRecipes = new ArrayList<String>();
 PrintWriter output;
 ArrayList<Recipes> recipeList = new ArrayList<Recipes>();
 ArrayList<Recipes> matchingRecipes = new ArrayList<Recipes>();
@@ -50,24 +53,33 @@ public void setup(){
 }
 
 public void draw(){
-  setRecipeValues();
+  matchingRecipes = new ArrayList<Recipes>();
+  
   numRecipes = new File("C:/Users/pengl3064/OneDrive - Waterloo Region District School Board/Documents/Processing/ICS-SE-project/RecipeApp").list().length-7;
   getIngredients();
-  
+  setRecipeValues();
+  println(recipeNames);
   background(255,0,0);
-  for(int i=0; i < numRecipes; i++){
-    if (ingredientsOwn == null||ingredientsOwn == ""){
-   
-         setRecipePos(i);
-         recipeList.get(i).drawRecipes();
-      }
-  else{
-    if(uniqueRecipes.contains(recipeList.get(i).name));
-      println("hi:", recipeList.get(i).name, uniqueRecipes);
+  
+  if (numRecipes >= 1){
+    for(int i=0; i < numRecipes; i++){
+      if (ingredientsOwned == null||ingredientsOwn == ""){
+           println(recipeList.get(i).name);
+           setRecipePos(i);
+           recipeList.get(i).drawRecipes();
+        }
+    else{
+      if(uniqueRecipes.contains(recipeList.get(i).name));
+         recipeList.get(i).cookable(i);
+      }   
     }
-
   }
-
+  for(int i=0; i < matchingRecipes.size(); i++){
+     setRecipePos(i);
+     matchingRecipes.get(i).drawRecipes();
+  }
+  
+  
   textAlign(CENTER);
   textSize(40);
   fill(0);
@@ -75,8 +87,7 @@ public void draw(){
   textSize(20);
   text("enter ingredients here", 320,90);
   containsIngredients();
-  
- // println(matchingRecipes);
+
   
 }
 
@@ -88,13 +99,12 @@ public void customGUI(){
 
 
 void SaveRecipeToText() {
- 
     String[] allIngredients = split(listOfRecipeIngredients, " ");
     String RecipeCode = String.valueOf(numRecipes)+".txt"; //recipe file name is a number so that it is easy to go through all of them with a for loop
     String Ingredients = join(allIngredients, " ");    
     PrintWriter newRecipe = createWriter(RecipeCode);    
     String[] FormattedRecipe = new String[10];
-    String[] amtHolder = split(listOfRecipeIngredients, " ");
+    String[] amtHolder = split(listOfIngredientsAmt, " ");
     String ingredientAmounts = join(amtHolder," ");
     FormattedRecipe[0] = "Name of Recipe:"+nameOfNewRecipe;
     FormattedRecipe[1] = "Recipe Creator: "+nameOfRecipeCreator;
@@ -111,6 +121,7 @@ void SaveRecipeToText() {
 }
 
 void setRecipeValues(){
+  recipeList = new ArrayList<Recipes>();
   for(int i = 0; i < numRecipes; i++){
     recipeList.add(new Recipes(recipeNames.get(i),1,1,"hello"));
   }

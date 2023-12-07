@@ -1,6 +1,6 @@
 //Make a dictionary for each one in order to check each recipe
 void getIngredients(){
-  
+  recipeNames = new ArrayList<String>();
   int endIndex = 0;
   int startIndex = 0;
   try{
@@ -20,7 +20,7 @@ void getIngredients(){
       }     
      for(int j = 0; j < endIndex - startIndex; j++){
        
-       ingredientsNeeded.add(myData[startIndex+j].strip());
+       ingredientsNeeded.add(myData[startIndex+j].strip().toLowerCase());
        
       }
       
@@ -38,8 +38,8 @@ void getIngredients(){
 
 void containsIngredients() {
   int textY = 250; // Initial vertical position of the text
-   Set<String> uniqueRecipes = new HashSet<>(); // Set to store unique recipes
-
+  uniqueRecipes = new HashSet<>(); // Set to store unique recipes
+  ArrayList<String> cookableRecipes = new ArrayList<String>();
 
   try {
     ingredientsOwned = ingredientsOwn.split(",");
@@ -50,7 +50,7 @@ void containsIngredients() {
 
       for (int j = 0; j < ingredientsOwned.length; j++) {
         ingredientsOwned[j]=ingredientsOwned[j].trim();
-        if (dict.get(recipeNames.get(i)).contains(ingredientsOwned[j])) {
+        if (dict.get(recipeNames.get(i)).contains(ingredientsOwned[j].toLowerCase())) {
           counter++;
           String recipeName = recipeNames.get(i);
           if (counter == dict.get(recipeNames.get(i)).size()) {
@@ -61,7 +61,9 @@ void containsIngredients() {
             }
             // Move the text down for the next match
             textY += 20; // Adjust the value based on your preference for spacing
+            
             uniqueRecipes.add(recipeName);
+            cookableRecipes.add(recipeName);
             recipeFound = true;
           }
         }

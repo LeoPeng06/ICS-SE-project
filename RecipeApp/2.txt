@@ -1,9 +1,0 @@
-Name of Recipe:rice
-Recipe Creator: leo
- 
-List of Ingredients:
-rice
-water 
-Preparation Time:0
-Cooking Time:0
-Recipe Steps:aasdad

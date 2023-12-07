@@ -50,8 +50,8 @@ public void RecipeInstructions(GTextArea source, GEvent event) { //_CODE_:recipe
   recipeSteps = recipeInstructions.getText();
 } //_CODE_:recipeInstructions:645923:
 
-public void textarea1_change1(GTextArea source, GEvent event) { //_CODE_:ingredientAmount:776553:
-  listOfRecipeIngredients = ingredientAmount.getText();
+public void ingAmt(GTextArea source, GEvent event) { //_CODE_:ingredientAmount:776553:
+  listOfIngredientsAmt = ingredientAmount.getText().strip();
 } //_CODE_:ingredientAmount:776553:
 
 public void SearchRecipes(GTextField source, GEvent event) { //_CODE_:searchIngredient:913126:
@@ -135,7 +135,7 @@ public void createGUI(){
   ingredientAmt.setOpaque(true);
   ingredientAmount = new GTextArea(this, 350, 60, 50, 200, G4P.SCROLLBARS_NONE);
   ingredientAmount.setOpaque(true);
-  ingredientAmount.addEventHandler(this, "textarea1_change1");
+  ingredientAmount.addEventHandler(this, "ingAmt");
   RecipeMaker.addControl(Recipe);
   RecipeMaker.addControl(RecipeName);
   RecipeMaker.addControl(Ingredients);

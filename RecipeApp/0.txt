@@ -1,9 +1,0 @@
-Name of Recipe:Apple Pie
-Recipe Creator: a
- 
-List of Ingredients:
-apple
-flour 
-Preparation Time:0
-Cooking Time:0
-Recipe Steps:a
